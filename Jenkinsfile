@@ -15,7 +15,7 @@ node('master') {
 
         stage('test') {
             // Run any testing suites
-            sh 'docker run -it --rm --name phpunit-container -v $(pwd):/usr/src/app -w /usr/src/app php:7.2-cli php ./vendor/bin/phpunit'
+            sh 'docker run --rm --name phpunit-container -v $(pwd):/usr/src/app -w /usr/src/app php:7.2-cli php ./vendor/bin/phpunit'
         }
 
         stage('deploy') {
