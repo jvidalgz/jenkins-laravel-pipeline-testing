@@ -5,7 +5,7 @@ node('master') {
             checkout scm
 
             // Install dependencies, create a new .env file and generate a new key, just for testing
-            sh 'docker run --rm --volume $(pwd):/app composer install'
+            sh 'docker run --rm --volume $(pwd):/app composer install --no-ansi'
             sh 'cp .env.example .env'
             sh 'docker run --rm --name key-generate-container -v $(pwd):/usr/src/app -w /usr/src/app php:7.2-cli php artisan key:generate'            
 
